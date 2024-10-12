@@ -67,7 +67,17 @@ const modalState = computed({
         </div>
 
         <template #footer>
-          
+          <ul>
+            <li>
+              *<small
+                >Font can be gotten on
+                <a class="text-purple-300" href="https://fonts.google.com"
+                  >Google Fonts</a
+                ></small
+              >
+            </li>
+            <li>*<small>Icon pack is Open source</small></li>
+          </ul>
         </template>
       </UCard>
     </UModal>

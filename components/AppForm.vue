@@ -1,12 +1,12 @@
 <template>
-  <UCard class="max-w-xl mx-auto p-6 rounded-2xl">
+  <UCard class="max-w-xl mx-auto p-2 lg:p-6 rounded-2xl">
     <UForm
       :schema="schema"
       :state="formState"
       @submit="onSubmit"
       class="space-y-6"
     >
-      <h1 class="text-4xl font-bold mb-4">Design Roulette</h1>
+      <h1 class="text-4xl font-bold mb-4 text-primary">Design Roulette</h1>
       <p class="mb-4 font-semibold"><code> &lt;Enugu Code/Jam&gt; </code></p>
 
       <UFormGroup label="Email" name="email">
@@ -113,9 +113,9 @@ const designLevels = [
 ];
 
 const figmaOptions = [
-  { label: "Figma Supremacy", value: "true" },
+  { label: "Figma Supremacy!!", value: "true" },
   { label: "Figma? eww", value: "false" },
-  { label: "What's figma?", value: "none" },
+  { label: "What's figma?", value: "never" },
 ];
 
 const inputDeviceOptions = [
@@ -126,6 +126,7 @@ const inputDeviceOptions = [
 
 const { generateDesignVariables } = useDesignRoulette();
 const { saveProfile } = useData();
+const toast = useToast();
 
 const isLoading = ref(false);
 
@@ -147,13 +148,28 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       designLevel: event.data.designLevel,
       usesFigma: event.data.usesFigma,
     });
-  } catch (error) {
-    console.error(error);
+    emit("submit", generateDesignVariables(randomizerInput));
+  } catch (error: any) {
+    if ((error.code = "23505")) {
+      return toast.add({
+        title: "User Already Registered",
+        description:
+          "Your details have already been entered into the Roulette.",
+        icon: "i-heroicons-exclamation-circle",
+        color: "red",
+      });
+    }
+    toast.add({
+      title: "Error Entering Roulette",
+      description:
+        "An error occurred while entering you into the Roulette, please try again.",
+      icon: "i-heroicons-exclamation-circle",
+      color: "red",
+    });
+    console.error("Error 3", error);
   } finally {
     isLoading.value = false;
   }
-
-  emit("submit", generateDesignVariables(randomizerInput));
 };
 </script>
 
