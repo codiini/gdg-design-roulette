@@ -149,8 +149,14 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       usesFigma: event.data.usesFigma,
     });
     emit("submit", generateDesignVariables(randomizerInput));
+    return toast.add({
+      title: "Success!",
+      description:
+        "Your details have been entered into the Roulette Successfully.",
+      icon: "i-heroicons-exclamation-circle",
+    });
   } catch (error: any) {
-    if ((error.code = "23505")) {
+    if (error.code == "23505") {
       return toast.add({
         title: "User Already Registered",
         description:
