@@ -80,10 +80,7 @@ onMounted(() => {
 });
 </script>
 
-<style>
-*{
-  outline: 2px solid red;
-}
+<style scoped>
 .bg-accent {
   background: linear-gradient(#58f1d3 0%, #a89fd7 71%);
 }
