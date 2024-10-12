@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-accent w-full min-h-screen flex flex-col items-center justify-start"
+    class="relative overflow-x-hidden bg-accent w-full min-h-screen flex flex-col items-center justify-start"
   >
     <div>
       <brutalist-x class="absolute left-0" />
@@ -80,7 +80,10 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
+<style>
+*{
+  outline: 2px solid red;
+}
 .bg-accent {
   background: linear-gradient(#58f1d3 0%, #a89fd7 71%);
 }
