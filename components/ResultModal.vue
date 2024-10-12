@@ -65,6 +65,10 @@ const modalState = computed({
           </p>
           <p><strong>UI Task:</strong> {{ designVariables.uiTask }}</p>
         </div>
+
+        <template #footer>
+          
+        </template>
       </UCard>
     </UModal>
   </div>

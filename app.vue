@@ -11,12 +11,7 @@
     </div>
     <div class="p-6 lg:p-20 w-full relative z-50">
       <div v-if="hasSubmitted" class="pt-20">
-        <UCard
-          :ui="{
-            background: 'dark:bg-white',
-          }"
-          class="max-w-xl mx-auto p-6 rounded-2xl"
-        >
+        <UCard class="max-w-xl mx-auto p-6 rounded-2xl">
           <template #header>
             <h1 class="text-4xl font-bold mb-4">Design Roulette</h1>
             <p class="mb-4 font-semibold">

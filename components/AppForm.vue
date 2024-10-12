@@ -1,10 +1,5 @@
 <template>
-  <UCard
-    :ui="{
-      background: 'dark:bg-white',
-    }"
-    class="max-w-xl mx-auto p-6 rounded-2xl"
-  >
+  <UCard class="max-w-xl mx-auto p-6 rounded-2xl">
     <UForm
       :schema="schema"
       :state="formState"
