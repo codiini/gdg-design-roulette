@@ -72,7 +72,7 @@ function checkPreviousSubmission() {
 
 const toggleModal = (event: any) => {
   showResult.value = event;
-  window.location.reload();
+  if (!hasSubmitted) window.location.reload();
 };
 
 onMounted(() => {
