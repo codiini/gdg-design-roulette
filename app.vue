@@ -5,7 +5,7 @@
     <div>
       <brutalist-x class="absolute left-0" />
       <brutalist-tags
-        class="absolute right-0 bottom-[30%] lg:bottom-0 z-[55] lg:z-auto w-40 lg:w-60"
+        class="absolute right-0 bottom-[30%] lg:bottom-0 z-[55] lg:z-auto w-24 lg:w-60"
       />
       <flower-shape class="absolute -right-10 lg:right-0 z-[55]" />
     </div>
