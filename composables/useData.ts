@@ -9,6 +9,7 @@ const useData = () => {
     yearsOfExperience,
     usesFigma,
     inputDevice,
+    designVariables,
   }: FormState) => {
     try {
       const { data, error } = await supabase
@@ -20,6 +21,15 @@ const useData = () => {
           years_of_experience: yearsOfExperience,
           uses_figma: usesFigma,
           input_device: inputDevice,
+          // design variables
+          primary_color: designVariables.primaryColor,
+          font: designVariables.font,
+          design_system: designVariables.designSystem,
+          icon_pack: designVariables.iconPack,
+          screen_size: designVariables.screenSize,
+          product_service: designVariables.productService,
+          business_type: designVariables.businessType,
+          ui_task: designVariables.uiTask,
         })
         .select();
 

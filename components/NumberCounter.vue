@@ -8,7 +8,7 @@
       @click="decrement"
     />
 
-    <div>
+    <div class="text-sm">
       {{ value }}
     </div>
 

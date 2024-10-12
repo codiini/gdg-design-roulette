@@ -82,6 +82,7 @@ import NumberCounter from "./NumberCounter.vue";
 import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import useData from "../composables/useData";
+import { RandomizerInput } from "~/types";
 
 const emit = defineEmits(["submit"]);
 
@@ -140,6 +141,10 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
   };
 
   try {
+    const designVariables = generateDesignVariables(
+      randomizerInput as RandomizerInput
+    );
+
     await saveProfile({
       email: event.data.email,
       fullName: event.data.fullName,
@@ -147,8 +152,16 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       inputDevice: event.data.inputDevice,
       designLevel: event.data.designLevel,
       usesFigma: event.data.usesFigma,
+      designVariables: designVariables,
     });
-    emit("submit", generateDesignVariables(randomizerInput));
+
+    emit("submit", designVariables);
+
+    localStorage.setItem(
+      "design_roulette_variables",
+      JSON.stringify(designVariables)
+    );
+
     return toast.add({
       title: "Success!",
       description:
