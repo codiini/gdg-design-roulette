@@ -59,18 +59,32 @@ const useDesignRoulette = () => {
 
     const screenSizes = ["Desktop", "Mobile", "Tablet", "Watch"];
 
-    const businessProductTaskTrios = [
-      { type: "Tech Startup", product: "AI Writing Assistant", task: "Content Creation Interface" },
-      { type: "E-commerce", product: "Sustainable Fashion Marketplace", task: "Product Filtering and Search" },
-      { type: "Healthcare", product: "Mental Health Chatbot", task: "Mood Tracking Dashboard" },
-      { type: "Education", product: "Language Learning Game", task: "Progress Visualization" },
-      { type: "Finance", product: "Freelance Skill Marketplace", task: "Payment Processing Flow" },
-      { type: "Entertainment", product: "Digital Art Gallery", task: "Virtual Exhibition Setup" },
-      { type: "Travel", product: "Augmented Reality Cooking Guide", task: "Recipe Exploration Interface" },
-      { type: "Food & Beverage", product: "Virtual Pet App", task: "Pet Customization Screen" },
-      { type: "Fitness & Wellness", product: "Personalized Fitness Tracker", task: "Workout Scheduling Calendar" },
-      { type: "Smart Home", product: "Smart Home Energy Manager", task: "Device Control Panel" },
+    const businessProductPairs = [
+      { type: "Tech Startup", product: "AI Writing Assistant" },
+      { type: "E-commerce", product: "Sustainable Fashion Marketplace" },
+      { type: "Healthcare", product: "Mental Health Chatbot" },
+      { type: "Education", product: "Language Learning Game" },
+      { type: "Finance", product: "Freelance Skill Marketplace" },
+      { type: "Entertainment", product: "Digital Art Gallery" },
+      { type: "Travel", product: "Augmented Reality Cooking Guide" },
+      { type: "Food & Beverage", product: "Virtual Pet App" },
+      { type: "Fitness & Wellness", product: "Personalized Fitness Tracker" },
+      { type: "Smart Home", product: "Smart Home Energy Manager" },
     ];
+
+    const uiTasks = [
+      "User Onboarding",
+      "Checkout Process",
+      "Search Functionality",
+      "User Profile Creation",
+      "Settings Configuration",
+      "Data Visualization",
+      "Social Sharing",
+      "Feedback Collection",
+      "Subscription Management",
+      "Content Curation",
+    ];
+
     const getRandomItem = (array: string[]) =>
       array[Math.floor(Math.random() * array.length)];
 
