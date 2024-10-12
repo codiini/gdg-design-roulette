@@ -33,7 +33,7 @@
     <result-modal
       class="relative z-[999]"
       :isOpen="showResult"
-      @update:is-open="showResult = $event"
+      @update:is-open="toggleModal($event)"
       :designVariables="designVariables"
     >
       <template #header> Your Design Challenge</template>
@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import BrutalistTags from "./components/svgs/BrutalistTags.vue";
 import BrutalistX from "./components/svgs/BrutalistX.vue";
 import FlowerShape from "./components/svgs/FlowerShape.vue";
@@ -69,6 +69,11 @@ function checkPreviousSubmission() {
     }
   }
 }
+
+const toggleModal = (event: any) => {
+  showResult.value = event;
+  window.location.reload();
+};
 
 onMounted(() => {
   checkPreviousSubmission();
