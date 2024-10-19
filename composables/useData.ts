@@ -1,7 +1,6 @@
 import type { FormState } from "~/types";
 
 const useData = () => {
-  const supabase = useSupabaseClient();
   const saveProfile = async ({
     email,
     fullName,
@@ -12,30 +11,31 @@ const useData = () => {
     designVariables,
   }: FormState) => {
     try {
-      const { data, error } = await supabase
-        .from("design_roulette")
-        .insert({
-          email: email,
-          full_name: fullName,
-          design_level: designLevel,
-          years_of_experience: yearsOfExperience,
-          uses_figma: usesFigma,
-          input_device: inputDevice,
-          // design variables
-          primary_color: designVariables.primaryColor,
-          font: designVariables.font,
-          design_system: designVariables.designSystem,
-          icon_pack: designVariables.iconPack,
-          screen_size: designVariables.screenSize,
-          product_service: designVariables.productService,
-          business_type: designVariables.businessType,
-          ui_task: designVariables.uiTask,
-        })
-        .select();
-
-      if (error) {
-        throw error;
-      }
+      const response = await $fetch("/api/db", {
+        method: 'POST',
+        body: {
+          range: 'Sheet1',
+          dupColIdx: 0,
+          dupRowIdx: 0,
+          values: [
+            [email],
+            [fullName],
+            [designLevel],
+            [yearsOfExperience],
+            [usesFigma],
+            [inputDevice],
+            [designVariables.primaryColor],
+            [designVariables.font],
+            [designVariables.designSystem],
+            [designVariables.iconPack],
+            [designVariables.screenSize],
+            [designVariables.productService],
+            [designVariables.businessType],
+            [designVariables.uiTask],
+          ],
+        },
+      });
+      return response
     } catch (error) {
       throw error;
     }

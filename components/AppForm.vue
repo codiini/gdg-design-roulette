@@ -107,10 +107,10 @@ const formState = reactive({
 });
 
 const designLevels = [
-  { label: "Newbie", value: "newbie" },
-  { label: "Intern", value: "intern" },
-  { label: "Mid Level", value: "mid_level" },
-  { label: "Senior Level", value: "senior_level" },
+  { label: "Newbie", value: "Newbie" },
+  { label: "Intern", value: "Intern" },
+  { label: "Mid Level", value: "Mid Level" },
+  { label: "Senior Level", value: "Senior Level" },
 ];
 
 const figmaOptions = [
@@ -120,9 +120,9 @@ const figmaOptions = [
 ];
 
 const inputDeviceOptions = [
-  { label: "Team Mouse", value: "mouse" },
-  { label: "Team Trackpad", value: "trackpad" },
-  { label: "Why not both?", value: "both" },
+  { label: "Team Mouse", value: "Mouse" },
+  { label: "Team Trackpad", value: "Trackpad" },
+  { label: "Why not both?", value: "Both" },
 ];
 
 const { generateDesignVariables } = useDesignRoulette();
@@ -145,7 +145,7 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       randomizerInput as RandomizerInput
     );
 
-    await saveProfile({
+    const response = await saveProfile({
       email: event.data.email,
       fullName: event.data.fullName,
       yearsOfExperience: event.data.yearsOfExperience,
@@ -154,6 +154,18 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       usesFigma: event.data.usesFigma,
       designVariables: designVariables,
     });
+
+    console.log(response)
+
+    if (response?.statusCode !== 200) {
+      return toast.add({
+        title: "Error Entering Roulette",
+        description: response.message ??
+          "An error occurred while entering you into the Roulette, please try again.",
+        icon: "i-heroicons-exclamation-circle",
+        color: "red",
+      });
+    }
 
     emit("submit", designVariables);
 
@@ -185,7 +197,6 @@ const onSubmit = async (event: FormSubmitEvent<Schema>) => {
       icon: "i-heroicons-exclamation-circle",
       color: "red",
     });
-    console.error("Error 3", error);
   } finally {
     isLoading.value = false;
   }
