@@ -170,13 +170,13 @@ const useDesignRoulette = () => {
     const seedValue = computed(() => {
       const nameSeed = userInput.fullName.charCodeAt(0);
       const levelSeed =
-        userInput.designLevel === "senior_level"
+        userInput.designLevel === "Senior Level"
           ? 3
-          : userInput.designLevel === "mid_level"
+          : userInput.designLevel === "Mid Level"
           ? 2
           : 1;
       const experienceSeed = Math.min(userInput.yearsOfExperience, 15);
-      const deviceSeed = userInput.inputDevice === "mouse" ? 1 : 2;
+      const deviceSeed = userInput.inputDevice === "Mouse" ? 1 : 2;
       const randomSeed = Math.floor(getSecureRandomNumber() * 10);
       return (
         (nameSeed + levelSeed + experienceSeed + deviceSeed + randomSeed) % 10
